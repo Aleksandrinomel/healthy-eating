@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Food_rus
 
 
 def index_page(request):
@@ -27,6 +28,10 @@ def register(request):
 
 def tables(request):
     return render(request, 'tables.html')
+
+def products(request):
+    products_list = Food_rus.objects.all()
+    return render(request, 'products.html', {'products_list': products_list})
 
 def utilities_animation(request):
     return render(request, 'utilities-animation.html')

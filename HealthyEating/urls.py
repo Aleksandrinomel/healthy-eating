@@ -24,6 +24,7 @@ from healthapp.views import forgot_password
 from healthapp.views import login
 from healthapp.views import register
 from healthapp.views import tables
+from healthapp.views import products
 from healthapp.views import utilities_animation
 from healthapp.views import utilities_border
 from healthapp.views import blank
@@ -41,6 +42,7 @@ urlpatterns = [
     path('login.html/', login),
     path('register.html/', register),
     path('tables.html/', tables),
+    path('products.html/', products),
     path('utilities-animation.html/', utilities_animation),
     path('utilities-border.html/', utilities_border),
     path('utilities-color.html/', utilities_color),
