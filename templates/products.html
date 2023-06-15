@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+{% load mathfilters %}
 
 <head>
 
@@ -379,24 +381,295 @@
                     {% for product in products_list %}
 
                     <!-- Content Row -->
-                    <h5 data-toggle="modal" data-target="#product{{ product.id }}"> {{ product.product }} </h5>
+                    <button class="product-link col-sm-12 text-left" data-toggle="modal" data-target="#product{{ product.id }}"> {{ product.product }} </button>
 
                     <div class="modal fade bd-example-modal-lg" id="product{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">{{ product.product }}</h6>
+                                    <h5 class="m-0 font-weight-bold text-primary">{{ product.product }}</h5>
                                 </div>
+
                                 <div class="card-body">
-
-                                    <h4 class="small font-weight-bold">{{ product }}<span
-                                            class="float-right">{{ product.water }}</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Макронутриенты</h6>
                                     </div>
-
+                                    <h4 class="small font-weight-bold">Калории<span
+                                            class="float-right">{{ product.energy }} Ккал</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ product.energy|div:1500|mul:100}}%"
+                                            aria-valuenow="{{ product.energy|div:1500|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Белки<span
+                                            class="float-right">{{ product.protein }} г</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ product.protein|div:91|mul:100}}%"
+                                            aria-valuenow="{{ product.protein|div:91|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Жиры<span
+                                            class="float-right">{{ product.fat }} г</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ product.fat|div:67|mul:100}}%"
+                                            aria-valuenow="{{ product.fat|div:67|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Углеводы<span
+                                            class="float-right">{{ product.carbohydrate }} г</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ product.carbohydrate|div:139|mul:100}}%"
+                                            aria-valuenow="{{ product.carbohydrate|div:139|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Вода<span
+                                            class="float-right">{{ product.water }} г</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ product.water|div:2704|mul:100}}%"
+                                            aria-valuenow="{{ product.water|div:2704|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Клетчатка<span
+                                            class="float-right">{{ product.fiber }} г</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ product.fiber|div:20|mul:100}}%"
+                                            aria-valuenow="{{ product.fiber|div:20|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Витамины и минералы</h6>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div><h4 class="small font-weight-bold">C<span
+                                                    class="float-right">{{ product.C }} мг</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ product.C|div:90|mul:100}}%"
+                                                    aria-valuenow="{{ product.C|div:90|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
