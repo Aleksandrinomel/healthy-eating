@@ -3,7 +3,7 @@ from .models import Food_rus
 
 
 def index_page(request):
-    return render(request, 'index.html')
+    return render(request, 'healthapp/index.html')
 
 def blank(request):
     return render(request, 'blank.html')
@@ -31,7 +31,7 @@ def tables(request):
 
 def products(request):
     products_list = Food_rus.objects.all()
-    return render(request, 'products.html', {'products_list': products_list})
+    return render(request, 'healthapp/products.html', {'products_list': products_list})
 
 def utilities_animation(request):
     return render(request, 'utilities-animation.html')

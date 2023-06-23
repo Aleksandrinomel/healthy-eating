@@ -33,7 +33,7 @@ from healthapp.views import utilities_other
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_page),
+    path('', index_page, name='index'),
     path('blank.html', blank),
     path('buttons.html', buttons),
     path('cards.html/', cards),
