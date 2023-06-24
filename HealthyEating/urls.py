@@ -16,13 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from healthapp.views import index_page
+from healthapp.views import index_page, RegisterUser, LoginUser, logout_user
+from healthapp.views import profile
 from healthapp.views import buttons
 from healthapp.views import cards
 from healthapp.views import charts
 from healthapp.views import forgot_password
-from healthapp.views import login
-from healthapp.views import register
+# from healthapp.views import login
+# from healthapp.views import register
 from healthapp.views import tables
 from healthapp.views import products
 from healthapp.views import utilities_animation
@@ -34,13 +35,15 @@ from healthapp.views import utilities_other
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='index'),
+    path('profile', profile, name='profile'),
     path('blank.html', blank),
     path('buttons.html', buttons),
     path('cards.html/', cards),
     path('charts.html/', charts),
     path('forgot-password.html/', forgot_password),
-    path('login.html/', login),
-    path('register.html/', register),
+    path('login/', LoginUser.as_view(), name='login'),
+    path('logout/', logout_user, name='logout'),
+    path('register/', RegisterUser.as_view(), name='register'),
     path('tables.html/', tables),
     path('products.html/', products),
     path('utilities-animation.html/', utilities_animation),

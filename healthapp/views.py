@@ -1,9 +1,53 @@
-from django.shortcuts import render
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
+from .forms import ProfileForm, RegisterUserForm, LoginUserForm
 from .models import Food_rus
 
 
 def index_page(request):
     return render(request, 'healthapp/index.html')
+
+def profile(request):
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    form = ProfileForm()
+    return render(request, 'healthapp/profile.html', {'form': form})
+
+
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'healthapp/register.html'
+    success_url = reverse_lazy('login')
+
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'healthapp/login.html'
+
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     c_def = self.get_user_context(title="Авторизация")
+    #     return dict(list(context.items()) + list(c_def.items()))
+
+    def get_success_url(self):
+        return reverse_lazy('index')
+
+def logout_user(request):
+    logout(request)
+    return redirect('index')
+
+# def login(request):
+#     return render(request, 'healthapp/login.html')
+
+# def register(request):
+#     return render(request, 'healthapp/register.html')
+
 
 def blank(request):
     return render(request, 'blank.html')
@@ -20,11 +64,7 @@ def charts(request):
 def forgot_password(request):
     return render(request, 'forgot-password.html')
 
-def login(request):
-    return render(request, 'login.html')
 
-def register(request):
-    return render(request, 'register.html')
 
 def tables(request):
     return render(request, 'tables.html')
