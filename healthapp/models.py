@@ -1,21 +1,32 @@
+from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
-class UserInfo(models.Model):
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    age = models.IntegerField()
-    sex = models.CharField(max_length=255)
-    height = models.FloatField()
-    weight = models.FloatField()
-    kfa = models.FloatField()
-    goal_weight = models.FloatField()
+    name = models.CharField(max_length=255, null=True)
+    email = models.CharField(max_length=255, null=True)
+    age = models.IntegerField(null=True)
+    sex = models.CharField(max_length=255, null=True)
+    height = models.FloatField(null=True)
+    weight = models.FloatField(null=True)
+    kfa = models.FloatField(null=True)
+    goal_weight = models.FloatField(null=True)
+
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    # instance.profile.save()
 
 
 class UserNeed(models.Model):
     id = models.IntegerField(primary_key=True)
-    user = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     nutrient_name = models.ForeignKey('NutrientName', on_delete=models.CASCADE)
     quantity = models.FloatField()
     unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
@@ -28,13 +39,13 @@ class Product(models.Model):
 
 class ExcludedProduct(models.Model):
     id = models.IntegerField(primary_key=True)
-    user = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 class Recipe(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=255)
-    user = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     prepare_time = models.IntegerField()
     cook_time = models.IntegerField()

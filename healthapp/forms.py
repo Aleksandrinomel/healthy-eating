@@ -6,9 +6,15 @@ from django.core.exceptions import ValidationError
 from .models import *
 
 
+class ProfileUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = UserInfo
+        model = Profile
         fields = '__all__'
 
     def clean_name(self):

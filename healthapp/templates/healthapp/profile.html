@@ -3,7 +3,15 @@
 <h3>Настройки профиля</h3>
 <form action="{% url 'profile' %}" method="post">
     {% csrf_token %}
-    {% for f in form %}
+    {% for f in user_profile_form %}
+    <div class="form-group row">
+        <label for="{{ f.id_for_label }}" class="col-sm-1 col-form-label">{{ f.label }}</label>
+        <div class="col-sm-10">
+          {{ f }}
+        </div>
+    </div>
+    {% endfor %}
+    {% for f in user_form %}
     <div class="form-group row">
         <label for="{{ f.id_for_label }}" class="col-sm-1 col-form-label">{{ f.label }}</label>
         <div class="col-sm-10">

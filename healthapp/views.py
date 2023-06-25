@@ -1,24 +1,30 @@
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
-from .forms import ProfileForm, RegisterUserForm, LoginUserForm
+from .forms import ProfileForm, RegisterUserForm, LoginUserForm, ProfileUserForm
 from .models import Food_rus
 
 
 def index_page(request):
     return render(request, 'healthapp/index.html')
 
+
+@login_required
 def profile(request):
     if request.method == "POST":
-        form = ProfileForm(request.POST)
-        if form.is_valid():
-            form.save()
+        user_profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        user_form = ProfileUserForm(request.POST, instance=request.user)
+        if user_profile_form.is_valid() and user_form.is_valid():
+            user_form.save()
+            user_profile_form.save()
             return redirect('profile')
-    form = ProfileForm()
-    return render(request, 'healthapp/profile.html', {'form': form})
+    user_profile_form = ProfileForm(instance=request.user.profile)
+    user_form = ProfileUserForm(instance=request.user)
+    return render(request, 'healthapp/profile.html', {'user_profile_form': user_profile_form, 'user_form': user_form})
 
 
 class RegisterUser(CreateView):
