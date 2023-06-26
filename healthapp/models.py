@@ -33,9 +33,15 @@ class UserNeed(models.Model):
 
 class Product(models.Model):
     id = models.IntegerField(primary_key=True)
+    product_name = models.ForeignKey('ProductName', on_delete=models.CASCADE, null=True)
+    product_category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE, null=True)
+    source = models.ForeignKey('Source', on_delete=models.CASCADE, null=True)
+
+class ProductName(models.Model):
+    id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=255)
-    product_category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE)
-    source = models.ForeignKey('Source', on_delete=models.CASCADE)
+    mzr_id = models.IntegerField(null=True)
+
 
 class ExcludedProduct(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -44,7 +50,7 @@ class ExcludedProduct(models.Model):
 
 class Recipe(models.Model):
     id = models.IntegerField(primary_key=True)
-    title = models.CharField(max_length=255)
+    recipe_name = models.ForeignKey('RecipeName', on_delete=models.CASCADE)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     prepare_time = models.IntegerField()
@@ -55,10 +61,16 @@ class Recipe(models.Model):
     world_kitchen = models.ForeignKey('WorldKitchen', on_delete=models.CASCADE)
     hot_or_cold = models.CharField(max_length=255)
 
+class RecipeName(models.Model):
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=255)
+    mzr_id = models.IntegerField(null=True)
+
 class RecipeCategoryName(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=255)
-    recipes = models.ManyToManyField(Recipe, through='RecipeCategory')
+    # recipes = models.ManyToManyField(Recipe, through='RecipeCategory')
+
 
 class RecipeCategory(models.Model):
     id = models.AutoField(primary_key=True)
@@ -74,10 +86,19 @@ class Instruction(models.Model):
 
 class RecipeIngredient(models.Model):
     id = models.IntegerField(primary_key=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    size_name_id = models.ForeignKey('SizeName', on_delete=models.CASCADE)
+    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
+    product_name = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.FloatField()
     unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
+    cooking_condition = models.ForeignKey('CookingCondition', on_delete=models.CASCADE)
+
+class RecipeNutrient(models.Model):
+    id = models.IntegerField(primary_key=True)
+    unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
+    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
+    nutrient_name = models.ForeignKey('NutrientName', on_delete=models.CASCADE)
+    quantity = models.FloatField()
 
 class Unit(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -107,7 +128,6 @@ class Size(models.Model):
     id = models.IntegerField(primary_key=True)
     size_name = models.ForeignKey('SizeName', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)
     quantity = models.FloatField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
@@ -124,6 +144,7 @@ class WeightLoss(models.Model):
     id = models.IntegerField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     cooking_condition = models.ForeignKey(CookingCondition, on_delete=models.CASCADE)
+    quantity = models.FloatField()
 
 class ProductNutrient(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -137,6 +158,7 @@ class CookingLoss(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     nutrient_name = models.ForeignKey('NutrientName', on_delete=models.CASCADE)
     cooking_condition = models.ForeignKey(CookingCondition, on_delete=models.CASCADE)
+    quantity = models.FloatField(null=True)
 
 class NutrientName(models.Model):
     id = models.IntegerField(primary_key=True)
