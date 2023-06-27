@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from healthapp.views import index_page, RegisterUser, LoginUser, logout_user
+from healthapp.views import index_page, RegisterUser, LoginUser, logout_user, index_page3
 from healthapp.views import profile
 from healthapp.views import buttons
 from healthapp.views import cards
@@ -35,6 +35,7 @@ from healthapp.views import utilities_other
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='index'),
+    path('ind', index_page3, name='index3'),
     path('profile', profile, name='profile'),
     path('blank.html', blank),
     path('buttons.html', buttons),

@@ -11284,3 +11284,12 @@ button.product-link {
     background:none;
     border:none;
 }
+
+.micro-nutr-label {
+    width: 50px;
+
+}
+
+.micro-nutr-value {
+  margin-right: 1em;
+}

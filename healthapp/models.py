@@ -51,15 +51,15 @@ class ExcludedProduct(models.Model):
 class Recipe(models.Model):
     id = models.IntegerField(primary_key=True)
     recipe_name = models.ForeignKey('RecipeName', on_delete=models.CASCADE)
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    description = models.CharField(max_length=255)
-    prepare_time = models.IntegerField()
-    cook_time = models.IntegerField()
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    description = models.CharField(max_length=255, null=True)
+    prepare_time = models.IntegerField(null=True)
+    cook_time = models.IntegerField(null=True)
     date = models.DateTimeField()
-    intake = models.ForeignKey('Intake', on_delete=models.CASCADE)
-    cooking_method = models.ForeignKey('CookingMethod', on_delete=models.CASCADE)
-    world_kitchen = models.ForeignKey('WorldKitchen', on_delete=models.CASCADE)
-    hot_or_cold = models.CharField(max_length=255)
+    intake = models.ForeignKey('Intake', on_delete=models.CASCADE, null=True)
+    cooking_method = models.ForeignKey('CookingMethod', on_delete=models.CASCADE, null=True)
+    world_kitchen = models.ForeignKey('WorldKitchen', on_delete=models.CASCADE, null=True)
+    hot_or_cold = models.CharField(max_length=255, null=True)
 
 class RecipeName(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -82,16 +82,15 @@ class Instruction(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     step_number = models.IntegerField()
     description = models.CharField(max_length=255)
-    imageURL = models.CharField(max_length=255)
+    imageURL = models.CharField(max_length=255, null=True)
 
 class RecipeIngredient(models.Model):
     id = models.IntegerField(primary_key=True)
-    size_name_id = models.ForeignKey('SizeName', on_delete=models.CASCADE)
+    size_name = models.ForeignKey('SizeName', on_delete=models.CASCADE, null=True)
     recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
     product_name = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.FloatField()
-    unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
-    cooking_condition = models.ForeignKey('CookingCondition', on_delete=models.CASCADE)
+    unit = models.ForeignKey('Unit', on_delete=models.CASCADE, null=True)
 
 class RecipeNutrient(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -163,6 +162,16 @@ class CookingLoss(models.Model):
 class NutrientName(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=255)
+
+class Need(models.Model):
+    id = models.IntegerField(primary_key=True)
+    kfa = models.IntegerField(null=True)
+    age = models.CharField(max_length=255, null=True)
+    sex = models.CharField(max_length=255, null=True)
+    quantity = models.FloatField(null=True)
+    unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
+    nutrient_name = models.ForeignKey('NutrientName', on_delete=models.CASCADE)
+
 
 class Food_rus(models.Model):
     id = models.AutoField(primary_key=True)

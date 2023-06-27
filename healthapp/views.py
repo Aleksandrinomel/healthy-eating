@@ -6,10 +6,15 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from .forms import ProfileForm, RegisterUserForm, LoginUserForm, ProfileUserForm
-from .models import Food_rus
+from .models import Food_rus, Profile, UserNeed
 
 
 def index_page(request):
+    if request.user.is_authenticated:
+        # username = request.user.id
+        info = Profile.objects.filter(user=request.user.id).values('id', 'kfa', 'sex', 'age')
+        user_nutrients = UserNeed.objects.filter(user=info[0]['id']).values('unit__title', 'nutrient_name__title', 'quantity')
+        print(user_nutrients)
     return render(request, 'healthapp/index.html')
 
 
@@ -90,5 +95,8 @@ def utilities_color(request):
 
 def utilities_other(request):
     return render(request, 'utilities-other.html')
+
+def index_page3(request):
+    return render(request, 'healthapp/index3.html')
 
 
