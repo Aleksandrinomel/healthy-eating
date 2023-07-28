@@ -1,3 +1,5 @@
+import re
+
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
@@ -6,16 +8,30 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from .forms import ProfileForm, RegisterUserForm, LoginUserForm, ProfileUserForm
-from .models import Food_rus, Profile, UserNeed
+from .models import Food_rus, Profile, UserNeed, Need
 
 
 def index_page(request):
-    if request.user.is_authenticated:
-        # username = request.user.id
-        info = Profile.objects.filter(user=request.user.id).values('id', 'kfa', 'sex', 'age')
-        user_nutrients = UserNeed.objects.filter(user=info[0]['id']).values('unit__title', 'nutrient_name__title', 'quantity')
-        print(user_nutrients)
-    return render(request, 'healthapp/index.html')
+    user_nutrients_dict = dict()
+    user_nutrients_needs_dict = dict()
+    # if request.user.is_authenticated:
+    info = Profile.objects.filter(user=1).values('id', 'kfa', 'sex', 'age')
+
+    user_nutrients = UserNeed.objects.filter(user=info[0]['id']).values('unit__title', 'nutrient_name__title', 'quantity')
+    for row in user_nutrients:
+
+        nutrient_title_list = re.split(r"-|,| ", row['nutrient_name__title'])
+        user_nutrients_dict['_'.join(nutrient_title_list)] = [row['quantity'], row['unit__title']]
+
+    user_nutrients_needs = Need.objects.filter(sex=info[0]['sex'], kfa=info[0]['kfa']).values('unit__title', 'nutrient_name__title', 'quantity', 'age')
+    for row in user_nutrients_needs:
+        if info[0]['age'] in range(int(row['age'].split('-')[0]), int(row['age'].split('-')[1])):
+            nutrient_title_list = re.split(r"-|,| ", row['nutrient_name__title'])
+            user_nutrients_needs_dict['_'.join(nutrient_title_list)] = [row['quantity'], row['unit__title']]
+            # print(user_nutrients_needs_dict)
+    print(user_nutrients_needs_dict)
+    print(user_nutrients_dict)
+    return render(request, 'healthapp/index.html', {'user_nutrients': user_nutrients_dict, 'user_nutrients_needs': user_nutrients_needs_dict})
 
 
 @login_required

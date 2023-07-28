@@ -13,40 +13,40 @@
                                                 <h6 class="m-0 font-weight-bold text-primary">Макронутриенты</h6>
                                             </div>
                                             <h4 class="small font-weight-bold">Калории<span
-                                                    class="float-right">{{ product.energy }} Ккал</span></h4>
+                                                    class="float-right">{{ user_nutrients.Калорийность.0 }} {{ user_nutrients.Калорийность.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.energy|div:1500|mul:100}}%"
-                                                    aria-valuenow="{{ product.energy|div:1500|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Калорийность.0|div:user_nutrients_needs.Калорийность.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Калорийность.0|div:user_nutrients_needs.Калорийность.0|mul:100|floatformat:'0' }}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Белки<span
-                                                    class="float-right">{{ product.protein }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Белки.0 }} {{ user_nutrients.Белки.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.protein|div:91|mul:100}}%"
-                                                    aria-valuenow="{{ product.protein|div:91|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Жиры<span
-                                                    class="float-right">{{ product.fat }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Жиры.0 }} {{ user_nutrients.Жиры.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.fat|div:67|mul:100}}%"
-                                                    aria-valuenow="{{ product.fat|div:67|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Жиры.0|div:user_nutrients_needs.Жиры.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Жиры.0|div:user_nutrients_needs.Жиры.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Углеводы<span
-                                                    class="float-right">{{ product.carbohydrate }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Углеводы.0 }} {{ user_nutrients.Углеводы.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.carbohydrate|div:139|mul:100}}%"
-                                                    aria-valuenow="{{ product.carbohydrate|div:139|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Углеводы.0|div:user_nutrients_needs.Углеводы.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Углеводы.0|div:user_nutrients_needs.Углеводы.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Вода<span
-                                                    class="float-right">{{ product.water }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Белки.0 }} {{ user_nutrients.Белки.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.water|div:2704|mul:100}}%"
-                                                    aria-valuenow="{{ product.water|div:2704|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Клетчатка<span
-                                                    class="float-right">{{ product.fiber }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Белки.0 }} {{ user_nutrients.Белки.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.fiber|div:20|mul:100}}%"
-                                                    aria-valuenow="{{ product.fiber|div:20|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -74,12 +74,13 @@
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_А__РЭ.0|div:user_nutrients_needs.Витамин_А__РЭ.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_А__РЭ.0|div:user_nutrients_needs.Витамин_А__РЭ.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_А__РЭ.0|div:user_nutrients_needs.Витамин_А__РЭ.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,17 +89,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">b-car</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.бета_Каротин.0|div:user_nutrients_needs.бета_Каротин.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.бета_Каротин.0|div:user_nutrients_needs.бета_Каротин.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.бета_Каротин.0|div:user_nutrients_needs.бета_Каротин.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,17 +109,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">B1</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_В1__тиамин.0|div:user_nutrients_needs.Витамин_В1__тиамин.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_В1__тиамин.0|div:user_nutrients_needs.Витамин_В1__тиамин.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_В1__тиамин.0|div:user_nutrients_needs.Витамин_В1__тиамин.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,17 +129,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">B2</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_В2__рибофлавин.0|div:user_nutrients_needs.Витамин_В2__рибофлавин.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_В2__рибофлавин.0|div:user_nutrients_needs.Витамин_В2__рибофлавин.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_В2__рибофлавин.0|div:user_nutrients_needs.Витамин_В2__рибофлавин.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -145,17 +149,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холи?</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.бета_Каротин.0|div:user_nutrients_needs.бета_Каротин.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.бета_Каротин.0|div:user_nutrients_needs.бета_Каротин.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.бета_Каротин.0|div:user_nutrients_needs.бета_Каротин.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -164,17 +169,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">B5</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_В5__пантотеновая.0|div:user_nutrients_needs.Витамин_В5__пантотеновая.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_В5__пантотеновая.0|div:user_nutrients_needs.Витамин_В5__пантотеновая.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_В5__пантотеновая.0|div:user_nutrients_needs.Витамин_В5__пантотеновая.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -183,17 +189,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">B6</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_В6__пиридоксин.0|div:user_nutrients_needs.Витамин_В6__пиридоксин.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_В6__пиридоксин.0|div:user_nutrients_needs.Витамин_В6__пиридоксин.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_В6__пиридоксин.0|div:user_nutrients_needs.Витамин_В6__пиридоксин.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,17 +209,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">B9</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_В9__фолаты.0|div:user_nutrients_needs.Витамин_В9__фолаты.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_В9__фолаты.0|div:user_nutrients_needs.Витамин_В9__фолаты.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_В9__фолаты.0|div:user_nutrients_needs.Витамин_В9__фолаты.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -221,17 +229,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">B12</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_В12__кобаламин.0|div:user_nutrients_needs.Витамин_В12__кобаламин.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_В12__кобаламин.0|div:user_nutrients_needs.Витамин_В12__кобаламин.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_В12__кобаламин.0|div:user_nutrients_needs.Витамин_В12__кобаламин.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -240,17 +249,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">C</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_C__аскорбиновая.0|div:user_nutrients_needs.Витамин_C__аскорбиновая.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_C__аскорбиновая.0|div:user_nutrients_needs.Витамин_C__аскорбиновая.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_C__аскорбиновая.0|div:user_nutrients_needs.Витамин_C__аскорбиновая.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -259,17 +269,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">D</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_D__кальциферол.0|div:user_nutrients_needs.Витамин_D__кальциферол.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_D__кальциферол.0|div:user_nutrients_needs.Витамин_D__кальциферол.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_D__кальциферол.0|div:user_nutrients_needs.Витамин_D__кальциферол.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -278,17 +289,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">E</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_Е__альфа_токоферол__ТЭ.0|div:user_nutrients_needs.Витамин_Е__альфа_токоферол__ТЭ.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_Е__альфа_токоферол__ТЭ.0|div:user_nutrients_needs.Витамин_Е__альфа_токоферол__ТЭ.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_Е__альфа_токоферол__ТЭ.0|div:user_nutrients_needs.Витамин_Е__альфа_токоферол__ТЭ.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -297,17 +309,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">H</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_Н__биотин.0|div:user_nutrients_needs.Витамин_Н__биотин.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_Н__биотин.0|div:user_nutrients_needs.Витамин_Н__биотин.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_Н__биотин.0|div:user_nutrients_needs.Витамин_Н__биотин.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -316,17 +329,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">вит.K</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_К__филлохинон.0|div:user_nutrients_needs.Витамин_К__филлохинон.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_К__филлохинон.0|div:user_nutrients_needs.Витамин_К__филлохинон.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_К__филлохинон.0|div:user_nutrients_needs.Витамин_К__филлохинон.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -335,17 +349,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">PP</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Витамин_РР__НЭ.0|div:user_nutrients_needs.Витамин_РР__НЭ.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Витамин_РР__НЭ.0|div:user_nutrients_needs.Витамин_РР__НЭ.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Витамин_РР__НЭ.0|div:user_nutrients_needs.Витамин_РР__НЭ.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -354,17 +369,18 @@
                                                 <div class="col mr-2">
                                                     <div class="row no-gutters align-items-center">
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Холин</div>
+                                                            <div class="mb-0 mr-1 font-weight-bold text-gray-800 text-right micro-nutr-label">Калий</div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="progress progress-sm mr-2">
                                                                 <div class="progress-bar bg-info" role="progressbar"
-                                                                    style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                                    style="width: {{ user_nutrients.Калий__K.0|div:user_nutrients_needs.Калий__K.0|mul:100|floatformat:'0' }}%"
+                                                                     aria-valuenow="{{ user_nutrients.Калий__K.0|div:user_nutrients_needs.Калий__K.0|mul:100|floatformat:'0' }}" aria-valuemin="0"
                                                                     aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">мг</div>
+                                                            <div class="mb-0 mr-0 font-weight-bold text-gray-800 micro-nutr-value">{{ user_nutrients.Калий__K.0|div:user_nutrients_needs.Калий__K.0|mul:100|floatformat:'0' }}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -691,40 +707,40 @@
                                                 <h6 class="m-0 font-weight-bold text-primary">Жирные кислоты</h6>
                                             </div>
                                             <h4 class="small font-weight-bold">НЖК<span
-                                                    class="float-right">{{ product.energy }} Ккал</span></h4>
+                                                    class="float-right">{{ user_nutrients.Насыщеные_жирные_кислоты.0 }} {{ user_nutrients.Насыщеные_жирные_кислоты.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.energy|div:1500|mul:100}}%"
-                                                    aria-valuenow="{{ product.energy|div:1500|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Насыщеные_жирные_кислоты.0|div:user_nutrients_needs.Насыщеные_жирные_кислоты.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Насыщеные_жирные_кислоты.0|div:user_nutrients_needs.Насыщеные_жирные_кислоты.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">ПНЖК<span
-                                                    class="float-right">{{ product.protein }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Полиненасыщенные_жирные_кислоты.0 }} {{ user_nutrients.Полиненасыщенные_жирные_кислоты.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.protein|div:91|mul:100}}%"
-                                                    aria-valuenow="{{ product.protein|div:91|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Полиненасыщенные_жирные_кислоты.0|div:user_nutrients_needs.Полиненасыщенные_жирные_кислоты.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Полиненасыщенные_жирные_кислоты.0|div:user_nutrients_needs.Полиненасыщенные_жирные_кислоты.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">МНЖК<span
-                                                    class="float-right">{{ product.fat }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Мононенасыщенные_жирные_кислоты.0 }} {{ user_nutrients.Мононенасыщенные_жирные_кислоты.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.fat|div:67|mul:100}}%"
-                                                    aria-valuenow="{{ product.fat|div:67|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Мононенасыщенные_жирные_кислоты.0|div:user_nutrients_needs.Мононенасыщенные_жирные_кислоты.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Мононенасыщенные_жирные_кислоты.0|div:user_nutrients_needs.Мононенасыщенные_жирные_кислоты.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Омега-3<span
-                                                    class="float-right">{{ product.carbohydrate }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Омега_3_жирные_кислоты.0 }} {{ user_nutrients.Омега_3_жирные_кислоты.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.carbohydrate|div:139|mul:100}}%"
-                                                    aria-valuenow="{{ product.carbohydrate|div:139|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Омега_3_жирные_кислоты.0|div:user_nutrients_needs.Омега_3_жирные_кислоты.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Омега_3_жирные_кислоты.0|div:user_nutrients_needs.Омега_3_жирные_кислоты.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Омега-6<span
-                                                    class="float-right">{{ product.water }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Омега_6_жирные_кислоты.0 }} {{ user_nutrients.Омега_6_жирные_кислоты.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.water|div:2704|mul:100}}%"
-                                                    aria-valuenow="{{ product.water|div:2704|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Омега_6_жирные_кислоты.0|div:user_nutrients_needs.Омега_6_жирные_кислоты.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Омега_6_жирные_кислоты.0|div:user_nutrients_needs.Омега_6_жирные_кислоты.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Трансжиры<span
-                                                    class="float-right">{{ product.fiber }} г</span></h4>
+                                                    class="float-right">{{ user_nutrients.Белки.0 }} {{ user_nutrients.Белки.1 }}</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: {{ product.fiber|div:20|mul:100}}%"
-                                                    aria-valuenow="{{ product.fiber|div:20|mul:100}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0' }}%"
+                                                    aria-valuenow="{{ user_nutrients.Белки.0|div:user_nutrients_needs.Белки.0|mul:100|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -744,7 +760,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Вес</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
